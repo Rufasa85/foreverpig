@@ -1,0 +1,8 @@
+<h1>{{name}} </h1>
+<h2>Farmer: <a href="/farmer/{{Farmer.id}}">{{Farmer.email}}</a></h2>
+<h3>{{Farmer.city}}</h3>
+<p>{{description}}</p>
+<h3>{{dob}}</h3>
+{{#each Tags}}
+  <button class="tagBtn">{{tag}}</button>
+{{/each}}

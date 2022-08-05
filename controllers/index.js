@@ -5,5 +5,7 @@ const apiRoutes = require("./api")
 
 router.use(frontEndRoutes)
 router.use("/api",apiRoutes)
-
+router.get("/sessiondata",(req,res)=>{
+    res.json(req.session)
+})
 module.exports = router;

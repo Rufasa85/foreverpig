@@ -1,0 +1,15 @@
+<h1>{{email}}</h1>
+<h2>{{city}}</h2>
+<section id="pigFlex">
+    {{#each Pigs}}
+    <div class="card">
+        <h3>name: <a href="/pig/{{id}}">{{name}}</a> </h3>
+        <p>{{description}}</p>
+        <h4>{{dob}}</h4>
+        {{#each Tags}}
+            <button class="tagBtn">{{tag}}</button>
+        {{/each}}
+    </div>
+
+    {{/each}}
+</section>
