@@ -4,11 +4,12 @@
         <input type="text" name="signup-email" id="signup-email">
         <input type="password" name="signup-password" id="signup-password">
         <input type="text" name="signup-city" id="signup-city">
-        <select name="type" id="acct-type">
+        <select name="type" id="acct-type-signup">
             <option value="" selected>"I am a ...."</option>
             <option value="caretaker">Caretaker</option>
             <option value="farmer">Farmer</option>
         </select>
+         <input type="text" name="signup-numPigs" id="signup-numPigs">
         <button>Signup</button>
     </form>
 </div>
@@ -17,6 +18,13 @@
     <form action="" id="login-form">
         <input type="text" name="login-email" id="login-email">
         <input type="password" name="login-password" id="login-password">
+          <select name="type" id="acct-type-login">
+            <option value="" selected disabled>I am a ....</option>
+            <option value="caretaker">Caretaker</option>
+            <option value="farmer">Farmer</option>
+        </select>
         <button>Login</button>
     </form>
 </div>
+<script src="/js/login.js"></script>
+<script src="/js/signup.js"></script>

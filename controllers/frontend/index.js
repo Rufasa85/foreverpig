@@ -9,17 +9,22 @@ router.get("/",(req,res)=>{
         const hbsData = data.map(modelIns=>modelIns.toJSON())
         console.log(hbsData)
         res.render("home",{
-            pigs:hbsData
+            pigs:hbsData,
+            isLoggedIn:req.session.loggedIn
         })
     })
 })
 
 router.get("/pig/:id",(req,res)=>{
     Pig.findByPk(req.params.id,{
-        include:[Farmer,Tag]
+        include:[Farmer,Tag,Caretaker]
     }).then(data=>{
         const hbsData = data.toJSON()
         console.log(hbsData)
+        hbsData.isLoggedIn=req.session.loggedIn
+        hbsData.isCaretaker = req.session.isFarmer === false
+        hbsData.userId=req.session.userId
+        console.log(hbsData);
         res.render("pig",hbsData)
     })
 })
@@ -33,6 +38,7 @@ router.get("/farmer/:id",(req,res)=>{
     }).then(data=>{
         const hbsData = data.toJSON()
         console.log(hbsData)
+        hbsData.isLoggedIn=req.session.loggedIn
         res.render("farmer",hbsData)
     })
 })
@@ -50,6 +56,8 @@ router.get("/profile",(req,res)=>{
             }]
         }).then(data=>{
             const hbsData = data.toJSON()
+            hbsData.isLoggedIn=req.session.loggedIn
+            hbsData.isFarmer=true
             console.log(hbsData)
             res.render("profile",hbsData)
         })
@@ -62,6 +70,7 @@ router.get("/profile",(req,res)=>{
         }).then(data=>{
             const hbsData = data.toJSON()
             console.log(hbsData)
+            hbsData.isLoggedIn=req.session.loggedIn
             res.render("profile",hbsData)
         })
     }
@@ -71,7 +80,9 @@ router.get("/login",(req,res)=>{
     if(req.session.loggedIn){
         res.redirect("/profile")
     }
-    res.render("loginSignup")
+    res.render("loginSignup",{
+        isLoggedIn:false
+    })
 })
 
 module.exports = router;

@@ -1,5 +1,16 @@
 <h1>{{email}}</h1>
 <h2>{{city}}</h2>
+{{#if isFarmer}}
+    <h2>New pig</h2>
+    <form action="" id="newPigForm">
+        <input type="text" id="name">
+        <input type="date" id="dob">
+        <textarea name="" id="description"></textarea>
+        <button id="addPig">Add Pig</button>
+    </form>
+    <script src="/js/addPig.js"></script>
+{{/if}}
+
 <section id="pigFlex">
     {{#each Pigs}}
     <div class="card">

@@ -13,11 +13,14 @@ router.get("/",(req,res)=>{
 })
 
 router.post("/",(req,res)=>{
+    if(!req.session.isFarmer){
+        return res.status(403).json({msg:"only farmers can add pigs"})
+    }
     Pig.create({
       name:req.body.name,
       dob:req.body.dob,
       description:req.body.description,
-      FarmerId:req.body.FarmerId
+      FarmerId:req.session.userId
     }).then(data=>{
         res.json(data)
     }).catch(err=>{

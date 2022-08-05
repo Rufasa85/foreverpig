@@ -21,11 +21,12 @@ router.post("/",(req,res)=>{
         lat:req.body.lat,
         lng:req.body.lng
     }).then(data=>{
-        req.session.userId=foundUser.id;
+        req.session.userId=data.id;
         req.session.isFarmer=true;
         req.session.loggedIn=true;
         res.json(data)
     }).catch(err=>{
+        console.log(err);
         res.status(500).json({msg:"womp womp",err})
     })
 })

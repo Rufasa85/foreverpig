@@ -6,3 +6,12 @@
 {{#each Tags}}
   <button class="tagBtn">{{tag}}</button>
 {{/each}}
+{{#if CaretakerId}}
+  <h2>Currently enjoying life with {{Caretaker.email}}</h2>
+{{else}}
+  <h2>This pig is looking for a home!</h2>
+  {{#if isCaretaker}}
+    <button data-userid="{{userId}}" data-pigid="{{id}}"id="adoptBtn">Adopt this Pig!</button>
+    <script src="/js/adopt.js"></script>
+  {{/if}}
+{{/if}}
