@@ -1,13 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const {Pig,Tag,Farmer} = require('../models');
+const frontEndRoutes = require("./frontend")
+const apiRoutes = require("./api")
 
-router.get("/",(req,res)=>{
-    Pig.findAll({
-        include:[Farmer,Tag]
-    }).then(data=>{
-        res.json(data);
-    })
-})
+router.use(frontEndRoutes)
+router.use("/api",apiRoutes)
 
 module.exports = router;
