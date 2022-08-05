@@ -1,0 +1,2 @@
+DROP DATABASE IF EXISTS forever_pig;
+CREATE DATABASE forever_pig;
